@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calcx", "AstrophysicsCalculator\Calcx.csproj", "{91608448-103A-4FDE-8AD8-BB95D65B6BB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calcx", "Calcx\Calcx.csproj", "{91608448-103A-4FDE-8AD8-BB95D65B6BB2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

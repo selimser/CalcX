@@ -73,6 +73,14 @@ body {
     outline: 0 !important;
 }
 
+a {
+    text-decoration: none;
+}
+
+    a:hover {
+        text-decoration: none;
+    }
+
 hr {
     box-sizing: content-box;
     height: 0;
@@ -10954,6 +10962,7 @@ a:focus {
 .sidebar .nav-item .nav-link,
 .topbar .nav-item .nav-link {
     position: relative;
+    text-decoration: none;
 }
 
     .sidebar .nav-item .nav-link .badge-counter,

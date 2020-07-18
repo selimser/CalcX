@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Calcx.Data;
+using Calcx.Service.FormulaService;
 
 namespace Calcx
 {
@@ -29,6 +30,8 @@ namespace Calcx
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+
+            services.AddSingleton<IFormulaService, FormulaService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

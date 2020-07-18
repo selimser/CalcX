@@ -1,0 +1,32 @@
+﻿@page "/SatelliteOrbit"
+@inject Calcx.Service.FormulaService.IFormulaService FormulaService
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Satellite Orbit Calculator</h1>
+</div>
+
+<div>
+    @if (base64string == null)
+    {
+        <p>Loading...</p>
+    }
+    else
+    {
+        <img src="data:image/png;base64, @base64string" />
+    }
+
+</div>
+
+
+@code
+{
+    private string base64string;
+
+    protected override async Task OnInitializedAsync()
+    {
+        //await Task.Delay(1000);
+
+        var result = FormulaService.TestMethod();
+        base64string = result;
+    }
+}

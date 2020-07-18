@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <UserSecretsId>4b0ff99e-2043-4d5b-9191-000d87f40dd9</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CSharpMath" Version="0.4.2" />
+    <PackageReference Include="CSharpMath.Rendering" Version="0.4.2" />
+    <PackageReference Include="CSharpMath.SkiaSharp" Version="0.4.2" />
+    <PackageReference Include="SkiaSharp" Version="2.80.1" />
+    <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
+  </ItemGroup>
+
+</Project>

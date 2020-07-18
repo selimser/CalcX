@@ -1,6 +1,59 @@
 ﻿@page "/SatelliteOrbit"
+@inject Calcx.Service.FormulaService.IFormulaService FormulaService
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Satellite Orbit Calculator</h1>
 </div>
 
+<div>
+    <h1>Single formula test</h1>
+    @if (base64string == null)
+    {
+        <p>Loading single formula...</p>
+    }
+    else
+    {
+        <img src="data:image/png;base64, @base64string" />
+    }
+
+    <hr />
+
+    <h1>Multiple formula test</h1>
+    @if (parsedFormulaCollection == null)
+    {
+        <p>Loading multiple formulas...</p>
+    }
+    else
+    {
+        <img src="data:image/png;base64, @parsedFormulaCollection["Formula1"]" />
+        <hr />
+        <img src="data:image/png;base64, @parsedFormulaCollection["Formula2"]" />
+        <hr />
+        <img src="data:image/png;base64, @parsedFormulaCollection["Formula3"]" />
+    }
+
+</div>
+
+
+@code
+{
+    private string base64string;
+    private Dictionary<string, string> parsedFormulaCollection;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var result = await FormulaService.GenerateFormulaAsBase64("");
+        base64string = result;
+
+        var formulaCollection = new Dictionary<string, string>()
+        {
+            { "Formula1", @"f(x) &= x^2" },
+            { "Formula2", @"F(x) &= \int^a_b \frac{ 1} { 3} x ^ 3" },
+            { "Formula3", @"g(x) &= \frac{1}{x}" },
+        };
+
+        parsedFormulaCollection = await FormulaService.GenerateMultipleFormulaAsBase64(formulaCollection);
+
+
+    }
+}

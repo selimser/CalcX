@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calcx.Service", "Calcx.Serv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calcx.Service.Test", "Calcx.Service.Test\Calcx.Service.Test.csproj", "{1B0A31B3-285A-496F-A65E-D6AE5371B415}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calcx.Core", "Calcx.Core\Calcx.Core.csproj", "{29BA1FE4-1C22-40FF-A2EC-C03E8BFEE759}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{1B0A31B3-285A-496F-A65E-D6AE5371B415}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B0A31B3-285A-496F-A65E-D6AE5371B415}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B0A31B3-285A-496F-A65E-D6AE5371B415}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29BA1FE4-1C22-40FF-A2EC-C03E8BFEE759}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29BA1FE4-1C22-40FF-A2EC-C03E8BFEE759}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29BA1FE4-1C22-40FF-A2EC-C03E8BFEE759}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29BA1FE4-1C22-40FF-A2EC-C03E8BFEE759}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

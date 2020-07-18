@@ -1,7 +1,6 @@
 ﻿using CSharpMath.SkiaSharp;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,6 +11,11 @@ namespace Calcx.Service.FormulaService
     {
         public async Task<string> GenerateFormulaAsBase64(string latexExpression, float painterCanvasWidth = 1024, float fontSize = 14)
         {
+            if (string.IsNullOrWhiteSpace(latexExpression))
+            {
+                return string.Empty;
+            }
+
             var painter = new MathPainter()
             {
                 LaTeX = latexExpression,
@@ -48,6 +52,11 @@ namespace Calcx.Service.FormulaService
 
                 foreach (var formula in formulaCollection)
                 {
+                    if (string.IsNullOrWhiteSpace(formula.Value))
+                    {
+                        continue;
+                    }
+
                     painter.LaTeX = formula.Value;
 
                     using (var memoryStream = new MemoryStream())

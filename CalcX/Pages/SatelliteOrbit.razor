@@ -1,59 +1,123 @@
 ﻿@page "/SatelliteOrbit"
 @inject Calcx.Service.FormulaService.IFormulaService FormulaService
 
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Satellite Orbit Calculator</h1>
-</div>
+<TopBar Title="Orbital radius, period and flight velocity for a satellite that orbits the Earth" />
 
-<div>
-    <h1>Single formula test</h1>
-    @if (base64string == null)
-    {
-        <p>Loading single formula...</p>
-    }
-    else
-    {
-        <img src="data:image/png;base64, @base64string" />
-    }
+<form>
+    <div class="row">
 
-    <hr />
+        <div class="col-4">
+            <div class="form-group">
+                <label for="orbitalAltitudeInput">Orbital Altitude (h)</label>
+                <input type="number" class="form-control" id="orbitalAltitudeInput" aria-describedby="orbitalAltitudeHelp" placeholder="Satellite altitude from Earth's surface">
+                <small id="orbitalAltitudeHelp" class="form-text text-muted">Unit is in kilometers</small>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
+                <label for="calculationDigitLimitInput">Digit Limitation</label>
+                <select class="form-control">
+                    <option value="6">
+                        6-digits
+                    </option>
+                    <option value="10">
+                        10-digits
+                    </option>
+                    <option value="14">
+                        14-digits
+                    </option>
+                    <option value="18">
+                        18-digits
+                    </option>
+                    <option value="22">
+                        22-digits
+                    </option>
+                    <option value="26">
+                        26-digits
+                    </option>
+                    <option value="30">
+                        30-digits
+                    </option>
+                    <option value="34">
+                        34-digits
+                    </option>
+                    <option value="38">
+                        38-digits
+                    </option>
+                    <option value="42">
+                        42-digits
+                    </option>
+                    <option value="46">
+                        46-digits
+                    </option>
+                    <option value="50">
+                        50-digits
+                    </option>
+                </select>
+                <small id="digitLimitHelp" class="form-text text-muted">Defines the precision of the calculation</small>
+            </div>
+            <div class="row float-right">
+                <div class="col-12 mt-2">
+                    <button type="submit" class="btn btn-primary">Calculate</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-1">
+            &zwnj;
+        </div>
+        <div class="col-4">
+            <h3>Calculation Method</h3>
+            <div class="row">
+                <div class="col-12">
+                    @if (formulaNotations == null)
+                    {
+                        <span>...</span>
+                    }
+                    else
+                    {
+                        <div class="row">
+                            <div class="col-12">
+                                In the following formula and results, orbital radius is <img src="data:image/png;base64, @formulaNotations["OrbitalRadius"]" />, satellite flight velocity in orbit is <img src="data:image/png;base64, @formulaNotations["FlightVelocity"]" /> and orbital period is <img src="data:image/png;base64,@formulaNotations["OrbitalPeriod"]" />&zwnj;.
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                With this information, <img src="data:image/png;base64, @formulaNotations["FlightVelocity"]" /> and <img src="data:image/png;base64,@formulaNotations["OrbitalPeriod"]" /> are calculated with:
+                            </div>
+                        </div>
 
-    <h1>Multiple formula test</h1>
-    @if (parsedFormulaCollection == null)
-    {
-        <p>Loading multiple formulas...</p>
-    }
-    else
-    {
-        <img src="data:image/png;base64, @parsedFormulaCollection["Formula1"]" />
-        <hr />
-        <img src="data:image/png;base64, @parsedFormulaCollection["Formula2"]" />
-        <hr />
-        <img src="data:image/png;base64, @parsedFormulaCollection["Formula3"]" />
-    }
+                        <div class="row mt-5">
+                            <div class="col-12">
+                                <img src="data:image/png;base64, @formulaNotations["FlightVelocityFormula"]" />
+                                <img src="data:image/png;base64, @formulaNotations["OrbitalPeriodFormula"]" class="mt-4" />
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
 
-</div>
+
+    </div>
+
+</form>
 
 
 @code
 {
-    private string base64string;
-    private Dictionary<string, string> parsedFormulaCollection;
+    private Dictionary<string, string> formulaNotations;
 
     protected override async Task OnInitializedAsync()
     {
-        var result = await FormulaService.GenerateFormulaAsBase64("");
-        base64string = result;
-
-        var formulaCollection = new Dictionary<string, string>()
-        {
-            { "Formula1", @"f(x) &= x^2" },
-            { "Formula2", @"F(x) &= \int^a_b \frac{ 1} { 3} x ^ 3" },
-            { "Formula3", @"g(x) &= \frac{1}{x}" },
+        var formulaNotationsRaw = new Dictionary<string, string>
+{
+            { "FlightVelocity", "v" },
+            { "OrbitalPeriod", "P" },
+            { "OrbitalRadius", "r_{O}" },
+            { "FlightVelocityFormula", @"Flight Velocity&=v&=\sqrt{\frac{398600.5}{6378.14+h}}" },
+            { "OrbitalPeriodFormula", @"OrbitalPeriod&=P&=2\pi\frac{6378.14+h}{v}" }
         };
 
-        parsedFormulaCollection = await FormulaService.GenerateMultipleFormulaAsBase64(formulaCollection);
-
-
+        formulaNotations = await FormulaService.GenerateMultipleFormulaAsBase64(formulaNotationsRaw);
     }
 }

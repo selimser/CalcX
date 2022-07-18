@@ -8,28 +8,9 @@
     </div>
 </NavLink>
 
-<!-- Divider -->
 <hr class="sidebar-divider my-0">
 
-<!-- Nav Item - Dashboard -->
-<NavLink href="/">
-    <li class="nav-item active">
-        <div class="nav-link">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span>
-        </div>
-    </li>
-</NavLink>
 
-<!-- Divider -->
-<hr class="sidebar-divider">
-
-<!-- Heading -->
-<div class="sidebar-heading">
-    Calculators
-</div>
-
-<!-- Nav Item - Pages Collapse Menu -->
 <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSatellite" aria-expanded="true" aria-controls="collapseSatellite">
         <i class="fas fa-fw fa-satellite"></i>
@@ -38,12 +19,11 @@
     <div id="collapseSatellite" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <NavLink href="SatelliteOrbit">
-                <span class="collapse-item">Satellite Orbit</span>
+                <span class="collapse-item">Radius, Period &amp; Velocity</span>
             </NavLink>
         </div>
     </div>
 </li>
-
 <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePlanetary" aria-expanded="true" aria-controls="collapsePlanetary">
         <i class="fas fa-fw fa-globe-europe"></i>
@@ -62,6 +42,12 @@
             </NavLink>
         </div>
     </div>
+</li>
+<li class="nav-item">
+    <NavLink class="nav-link" href="AstronomicalConstants">
+        <i class="fas fa-fw fa-square-root-alt"></i>
+        <span>Astronomical Constants</span>
+    </NavLink>
 </li>
 
 <!-- Divider -->
